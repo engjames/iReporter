@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>iReporter</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<header> 
+  <div>
+  
+  <ul>
+  <a href="red_flag.html"><img  src = "img/logo2.png" style="float: left;position: relative;height:60px ;width :200px"></a>
+  <li><a href="index.html">log out</a></li>
+  <li><a href="profile.html">profile</a></li>
+  <li><a class="active" href="intervention.html">intervention</a></li>
+  <li><a href="red_flag.html">red-flag</a></li>
+</div>
+  </ul>
+</header>
+  <h1 id = 'heading'>Interventions</h1> 
+<section>
+ <table>
+  <button id="modalBtn" class="button" style = 'float:right; margin-right: 138px ;margin-top: -70px'> + Intervention</button>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Status</th>
+    <th>Created On</th>
+    <th>Actions</th>
+  </tr>
+  
+  <tr>
+    <td>1</td>
+    <td>repair bad road sections</td>
+    <td>0.347596,32.582520</td>
+    <td>new</td>
+    <td>11-08-2017</td>
+    <td><button id="editBtn" class="button">Edit</button>&nbsp &nbsp  <button id = 'delete-button'  onclick = "mydeleteFunction()">Delete</button></td>
+  </tr>
+</table>
+</section>
+
+
+<!-- The Modal for add products-->
+<div id="simpleModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+           <h1>Add Intervention <span class="closeBtn">&times;</span></h1>
+
+    </div>
+    <div class="modal-body">
+      <form class="modal_elements">
+        <label for="fname">Name</label>
+        <input type="text" name="name" placeholder=" Enter Intervention" required>
+        <label for="fname">Location</label><br/>
+        <input type="number" name="location" id="latitude" placeholder="Enter Latitude" required>
+        <input type="number" placeholder="Enter Longitude" id="longitude" name="longitude" required><br/><br/>
+        <input type="submit" name="add_product" value="submit" id="submit">
+      </form>
+
+    </div>
+    <div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+<!-- modal for edit products -->
+<div id="EditModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+            <h1>Edit Intervention <span class="closeEditBtn">&times;</span></h1>
+    </div>
+    <div class="Edit-body">
+        <form class="modal_elements">
+                <label for="fname">Name</label>
+                <input type="text" name="name" value="repair bad road sections" required>
+                <label for="fname">Location</label><br/>
+                <input type="number" name="location" id="latitude" value="0.347596" required>
+                <input type="number" value="32.582520" id="longitude" name="longitude" required><br/><br/>
+                <input type="submit" name="add_product" value="save changes" id="submit">
+        </form>
+
+  </div>
+
+</div> 
+ <script src="js/myscript.js"></script> 
+
+
+</body>
+</html>
