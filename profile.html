@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>iReporter</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<header> 
+  <div>
+  
+  <ul>
+  <a href="red_flag.html"><img  src = "img/logo2.png" style="float: left;position: relative;height:60px ;width :200px"></a>
+  <li><a href="index.html">log out</a></li>
+  <li><a class="active" href="profile.html">profile</a></li>
+  <li><a href="intervention.html">intervention</a></li>
+  <li><a href="red_flag.html">red-flag</a></li>
+</div>
+  </ul>
+</header>
+<section>
+ 
+<div style="text-align:center">
+        <h1>Updates on Red flags / Interventions</h1>
+        <button class="dot" id="resolved_i">4</button>
+        <button class="dot" id="resolved_R">2</button>
+        <button class="dot" id="yet_to_resolved_R">7</button>
+        <button class="dot" id="yet_to_resolved_i">8</button>
+        <button class="dot" id="rejected_i">0</button>
+        <button class="dot" id="rejected_R">10</button>
+</div>
+
+<table border="0">
+  <tr>
+    <td><button id="resolved_i"></button></td>
+    <td>number of intervention records that has been resolved</td>
+  </tr>
+  <tr>
+        <td><button id="resolved_R"></button></td>
+        <td>number of red-flag records that has been resolved</td>
+  </tr>
+  <tr>
+        <td><button id="yet_to_resolved_R"></button></td>
+        <td>number of red-flag records yet to be resolved</td>
+</tr>
+<tr>
+        <td><button id="yet_to_resolved_i"></button></td>
+        <td>number of intervention records yet to be resolved</td>
+</tr>
+<tr>
+        <td><button id="rejected_i"></button></td>
+        <td>number of intervention records rejected</td>
+</tr>
+<tr>
+        <td><button id="rejected_R"></button></td>
+        <td>number of red-flag records rejected</td>
+</tr>
+
+</table>
+</section>
+
+
+
+ <script src="js/myscript.js"></script> 
+
+
+</body>
+</html>
