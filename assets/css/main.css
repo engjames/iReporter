@@ -9,6 +9,12 @@ img.bg-img{
 	z-index: 9;
 }
 
+/* #imagess{
+	position: relative;
+	height:40px ;
+	width :200px
+  } */
+
 /* login content area for normal users */
 div.login-content{
 	position: fixed;

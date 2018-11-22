@@ -8,7 +8,7 @@ function authenticateUsers(){
   }else if(email==='admin@gmail.com' && password ==="admin123"){
     var email = document.querySelector("#email").value;
     var password = document.querySelector("#field").value;
-    window.location.href ="admin.html";
+    window.location.href ="admin_manage_redflags.html";
 
   }
 }
