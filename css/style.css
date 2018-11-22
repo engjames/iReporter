@@ -88,8 +88,12 @@ button:hover{
 #bg-img{
   background: url(../img/blue.jpg);
 }
-
-
+#hed{
+  float: left;
+  position: relative;
+  height:60px ;
+  width :130px"
+}
 
 
 
@@ -157,6 +161,11 @@ header li a:hover:not(.active){
   margin-left: 122px;
 }
 
+#modalBtn{
+  float:right;
+  margin-right: 138px ;
+  margin-top: -70px;
+}
 
 
 #modalBtnedit{
@@ -311,6 +320,18 @@ header li a:hover:not(.active){
     padding: 2px 16px;
     background-color: #4B99BD;
     color: white;
+}
+#select{
+  height: 44px;
+  font-size: 16px;
+  width: 35%;
+  margin-bottom: 10px;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 /*Accounts*/
