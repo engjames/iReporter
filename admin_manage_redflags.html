@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>iReporter</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<header> 
+  <div>
+  
+  <ul>
+  <a href="admin_manage_redflags.html"><img  src = "img/logo2.png" id="hed"></a> 
+  <li><a href="index.html">log out</a></li>
+  <li><a href="admin_manage_interventions.html">intervention</a></li>
+  <li><a  class="active" href="admin_manage_redflags.html">red-flag</a></li>
+</div>
+  </ul>
+</header>
+  <h1 id = 'heading'>Red-Flags</h1> 
+<section>
+ <table>
+  <tr>
+    <th>#</th>
+    <th>Username</th>
+    <th>Red-Flag</th>
+    <th>Location</th>
+    <th>Status</th>
+    <th>Created On</th>
+    <th>Actions</th>
+  </tr>
+  
+  <tr>
+    <td>1</td>
+    <td>Kisuule</td>
+    <td>collapsed bridges</td>
+    <td>0.347596,32.582520</td>
+    <td>new</td>
+    <td>11-08-2017</td>
+    <td><button id="modalBtn" class="button" style = 'float:right; margin-right: 138px ;margin-top: -10px'>update status</button></td>
+  </tr>
+</table>
+</section>
+
+
+<!-- The Modal for add products-->
+<div id="simpleModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+           <h1>Update red-flag status <span class="closeBtn">&times;</span></h1>
+    </div>
+    <div class="modal-body">
+      <form class="modal_elements">
+        <label for="fname">status</label>
+        <select id="select" name="name" required>
+          <option value="under_investigation">under investigation</option>
+          <option value="rejected">rejected</option>
+          <option value="resolved">resolved</option>
+        </select>
+        <input type="submit" name="add_product" value="update" id="submit">
+      </form>
+
+    </div>
+    <div>
+      
+    </div>
+  </div>
+
+</div>
+
+ <script src="js/myscript.js"></script> 
+
+
+</body>
+</html>
