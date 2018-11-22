@@ -40,7 +40,7 @@ form.login-form p{
 	font-size: 25px;
 	margin-bottom: 15px;
 	padding-bottom: 0px;
-	color: white;
+	color: red;
 	text-align: left;
 }
 
@@ -97,7 +97,7 @@ div.info .con{
 
 div.info .title{
 	color: white;
-	font-size: 25px;
+	font-size: 22px;
 }
 
 div.info .head1{
@@ -105,7 +105,7 @@ div.info .head1{
 	font-size: 25px;
 	margin-bottom: 15px;
 	padding-bottom: 0px;
-	color: white;
+	color: red;
 	text-align: left;
 }
 
