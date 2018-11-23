@@ -38,6 +38,7 @@ For one to use this application, a computer, smartphone, browser and a steady in
 ```bash
 Name: Kisuule James.
 Email: kisuulejames1@gmail.com
+Alternative email: getjames20@gmail.com
 ```
 
 ## Credits and acknowledgement: ##

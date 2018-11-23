@@ -9,12 +9,6 @@ img.bg-img{
 	z-index: 9;
 }
 
-/* #imagess{
-	position: relative;
-	height:40px ;
-	width :200px
-  } */
-
 /* login content area for normal users */
 div.login-content{
 	position: fixed;
@@ -46,7 +40,7 @@ form.login-form p{
 	font-size: 25px;
 	margin-bottom: 15px;
 	padding-bottom: 0px;
-	color: red;
+	color: darkorange;
 	text-align: left;
 }
 
@@ -84,12 +78,13 @@ div.form-wrap button{
 	border: none;
 	color: white;
 	display:block;
-	background-color: rgb(199, 199, 212);
+	background-color: blue;
 }
 /* login */
 div.form-wrap button a{
 	text-decoration: none;
 	display:block;
+	color: white;
 }
 
 div.form-wrap p{
@@ -111,7 +106,7 @@ div.info .head1{
 	font-size: 25px;
 	margin-bottom: 15px;
 	padding-bottom: 0px;
-	color: red;
+	color:darkorange;
 	text-align: left;
 }
 
@@ -129,7 +124,7 @@ div.info .head4{
 }
 
 a {
-	color: red;
+	color: white;
 }
 
 div.info button{
@@ -138,7 +133,7 @@ div.info button{
 	display:block;
 	border: none;
 	color: gray;
-	background-color: rgb(199, 199, 212);
+	background-color:blue;
 }
 
 div.info button a{
