@@ -75,3 +75,4 @@ class RedFlagUrls:
         redflag_view  = RedFlagView.as_view('ireporter')
         app.add_url_rule('/api/v1/red-flags', view_func=redflag_view, methods=['POST'])
         app.add_url_rule('/api/v1/red-flags', defaults={'id': None}, view_func=redflag_view, methods=['GET',])
+        app.add_url_rule('/api/v1/red-flags/<id>', view_func=redflag_view,  methods=['GET',])
