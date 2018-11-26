@@ -105,7 +105,27 @@ class RedFlagViews(MethodView):
                 return jsonify({"status": 400, "data":[{"error-message" : "wrong body format. follow this example ->> {'status':'under investigation'}"}]})
             return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]})
         return jsonify({"status": 400, "data":[{"error-message" : "id cannot be a negative"}]})
-        
+
+    # Delete a specific red flag record
+    def delete(self, id):
+        try:
+            redflag_id = int(id)
+        except:
+           return jsonify({"status": 400, "data":[{"error-message" : "id should be a non negative integer"}]})
+
+        if 'createdBy' in request.json and isinstance(request.json['createdBy'], str): 
+            if redflag_id > 0:
+                for redflag_record in redflag_list:
+                    if redflag_record.__dict__['id'] == redflag_id:
+                        if redflag_record.__dict__['createdBy'] == request.json['createdBy']:
+                            if redflag_record.__dict__['status'] in ['under investigation','rejected','resolved']:
+                                return jsonify({"status":400, "data": [{"error-message" : "You can no longer edit or delete this red-flag"}]})
+                            redflag_list.remove(redflag_record)
+                            return jsonify({"status":201, "data":[{"id":id, "message":"red-flag record has been deleted"}]})
+                        return jsonify({"status": 400, "data":[{"error-message" : "invalid username"}]})
+                return jsonify({"status":404, "data": [{"error-message" : "No red-flag found"}]})
+            return jsonify({"status": 400, "data":[{"error-message" : "id cannot be a negative"}]})
+        return jsonify({"status": 400, "data":[{"error-message" : "username is missing. follow this example ->> {'createdBy':'James']}"}]})
         
 class UpdateStatus(MethodView):
 
