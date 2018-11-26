@@ -8,29 +8,6 @@ class RedFlagView(MethodView):
     #self, id, "23/11/2018", "James", "red-flag", (12.6578.8.9090), "draft", "collapsed bridges"
     # redflag_record = RedFlag(1,"23/11/2018", "James", "red-flag", [12.6578,8.9090], "draft", "collapsed bridges")
     redflag_list = []
-
-    def get(self, id):
-        if id is None:
-            if not self.redflag_list:
-                return jsonify({"status":200, "data":"No red-flags found. Please create one."})
-            return jsonify({"status":200,"data": [redflag_record.__dict__ for redflag_record in self.redflag_list]})
-
-        
-        try:
-            redflag_id = int(id)
-        except:
-            return jsonify({"status": 400, "data":[{"error-message":"id should be a non negative integer" }]})
-        
-        if redflag_id > 0:
-            single_redflag_record = [redflag_record.__dict__ for redflag_record in self.redflag_list if redflag_record.__dict__['id'] == redflag_id ]
-            if single_redflag_record:
-                return jsonify({"status":200, "data": single_redflag_record[0]})
-            return jsonify({"status":404, "data":[{"error-message" : "No red-flag found"}]})
-        return jsonify({"status": 400, "data":[{"error-message" : "id should be a non negative integer"}]})
-
-
-
-
     # Create a red-flag record
     def post(self):
         if request.content_type == 'application/json':
@@ -71,44 +48,6 @@ class RedFlagView(MethodView):
             
             return jsonify({"status":400, "data": [{'error-message' : 'wrong body format. follow this example ->> '+'{“createdBy”:​James​, “location”:​​[12.4567,3.6789]​, “comment”:​collapsed bridges}'}]})
         return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]}) 
-
-    def put(self, id):
-        try:
-            redflag_id = int(id)
-        except:
-            return jsonify({"status": 400, "data":[{"error-message":"id should be a non negative integer" }]})
-        
-        if redflag_id > 0:
-            if request.content_type == 'application/json':
-                if 'status' in request.json and isinstance(request.json['status'], str):
-                    redflag_json = request.get_json()
-                    for redflag_record in self.redflag_list:
-                        if redflag_record.__dict__['id'] == redflag_id:
-                            redflag_record.__dict__['status'] = redflag_json['status']
-                            return jsonify({"status":400, "data":[{"id":redflag_id, "message":"Updated red-flag record’s location"}]})
-                    return jsonify({"status":404, "data": [{"error-message" : "No red-flag found"}]})
-                return jsonify({"status": 400, "data":[{"error-message" : "wrong body format. follow this example ->> {'status':'under investigation'}"}]})
-            return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]})
-        return jsonify({"status": 400, "data":[{"error-message" : "id cannot be a negative"}]})
-        
-
-
-    # Delete a specific red flag record
-    def delete(self, id):
-        try:
-            redflag_id = int(id)
-        except:
-           return jsonify({"status": 400, "data":[{"error-message" : "id should be a non negative integer"}]})
-
-        if redflag_id > 0:
-            for redflag_record in self.redflag_list:
-                if redflag_record.__dict__['id'] == redflag_id:
-                    self.redflag_list.remove(redflag_record)
-                    return jsonify({"status":200, "data": self.redflag_list})
-            return jsonify({"status":404, "data": [{"error-message" : "No red-flag found"}]})
-        return jsonify({"status": 400, "data":[{"error-message" : "id cannot be a negative"}]})
-
-
 
 class RedFlagUrls:
     @staticmethod
