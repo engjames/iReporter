@@ -158,6 +158,6 @@ class RedFlagUrls:
         update_status  = UpdateStatus.as_view('update_status')
         app.add_url_rule('/api/v1/red-flags', defaults={'id': None},
                          view_func=redflag_view, methods=['GET',])
-        app.add_url_rule('/api/v1/red-flags', view_func=redflag_view, methods=['POST',])
+        app.add_url_rule('/api/v1/red-flags', view_func=redflag_view, methods=['POST'])
         app.add_url_rule('/api/v1/red-flags/<id>', view_func=redflag_view,  methods=['GET', 'PUT', 'DELETE'])
         app.add_url_rule('/update-red-flags/<id>', view_func=update_status,  methods=['PUT'])
