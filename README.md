@@ -64,7 +64,7 @@ API Endpoints currently available are;
 
 |__Http header__| __Endpoint__ | __Functionality__    | __Body__  |
 |------|-------------|------------|--------------------------------|
-|POST|  /api/v1/redflags/      | Create a ​red-flag​ record     | {"createdBy":"james","location":[2, 4],"comment":"Someone is robbing a shop"}                                |
+|POST|  /api/v1/redflags/      | Create a ​red-flag​ record     | {"createdBy":"james","location":[2, 4],"comment":"Corruption"}                                |
 |GET|  /api/v1/redflags/      | Get all ​red-flag​ records  |                             |
 |GET|  /api/v1/redflags/<id>    | Get a specific ​red-flag​ record    |                   |
 |PUT| /api/v1/redflags/<id>    |  Edit a specific ​red-flag​ record| {"location":[2, 4]}  |
