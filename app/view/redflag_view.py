@@ -4,16 +4,15 @@ from app.model.redflag_model import RedFlag
 from flask.views import MethodView
 
 redflag_list = []
-class RedFlagViews(MethodView):
 
-    #self, id, "23/11/2018", "James", "red-flag", (12.6578.8.9090), "draft", "collapsed bridges"
-    # redflag_record = RedFlag(1,"23/11/2018", "James", "red-flag", [12.6578,8.9090], "rejected", "collapsed bridges")
-   
+
+class RedFlagViews(MethodView):
 
     def get(self, id):
         if id is None:
             if not redflag_list:
-                return jsonify({"status":200, "data":"No red-flags found. Please create one."})
+                return jsonify({"status":200, "data": "No red-flags found. Please create one."})
+
             return jsonify({"status":200,"data": [redflag_record.__dict__ for redflag_record in redflag_list]})
 
         
