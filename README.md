@@ -69,15 +69,11 @@ Then after installing pytest, type the command below to run the tests
  pytest
 ```
 ## Built With
-
 * [Flask](http://flask.pocoo.org/docs/1.0/) - Python web framework used
 
 ## Versioning
-
 * URL Versioning has been used to version this applications endpoint 
-
 * Currently only version:1 is available 
 
 ## Deployment
-
 * The app is deployed on heroku  https://
