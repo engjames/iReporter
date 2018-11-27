@@ -4,9 +4,7 @@ iReporter enables any/every citizen to bring any form of corruption to the notic
 [![Build Status](https://travis-ci.org/engjames/iReporter.svg?branch=cha2_finished_api)](https://travis-ci.org/engjames/iReporter)
 
 ## coveralls
-```
-http.....
-```
+[![Coverage Status](https://coveralls.io/repos/github/engjames/iReporter/badge.svg?branch=cha2_finished_api)](https://coveralls.io/github/engjames/iReporter?branch=cha2_finished_api)
 ## code climate
 ```
 http.......
