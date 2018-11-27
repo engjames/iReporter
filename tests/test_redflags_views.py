@@ -85,3 +85,5 @@ def test_to_change_geolocation_of_a_redflag():
     assert json_data['data']['createdBy'] == "James"
     assert json_data['data']['comment'] == "collapsed bridges"
     assert json_data['data']['status'] == "draft"
+
+
