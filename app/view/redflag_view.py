@@ -68,7 +68,7 @@ class RedFlagViews(MethodView):
                                                 request.json['location'], "draft", request.json['comment'])
 
                 redflag_list.append(new_redflag_record)
-                return jsonify({"status":201, "data":[{"id":id, "message":"Created red-flag record"}]})
+                return jsonify({"status":201, "data":[{"id":id, "message":"Created red-flag record"}]}), 201
             
             return jsonify({"status":400, "data": [{'error-message' : 'wrong body format. follow this example ->> '+'{“createdBy”:​James​, “location”:​​[12.4567,3.6789]​, “comment”:​collapsed bridges}'}]})
         return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]}) 
@@ -160,4 +160,4 @@ class RedFlagUrls:
                          view_func=redflag_view, methods=['GET',])
         app.add_url_rule('/api/v1/red-flags', view_func=redflag_view, methods=['POST'])
         app.add_url_rule('/api/v1/red-flags/<id>', view_func=redflag_view,  methods=['GET', 'PUT', 'DELETE'])
-        app.add_url_rule('/update-red-flags/<id>', view_func=update_status,  methods=['PUT'])
+        app.add_url_rule('/api/v1/update-red-flags/<id>', view_func=update_status,  methods=['PUT'])
