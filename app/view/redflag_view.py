@@ -40,12 +40,12 @@ class RedFlagViews(MethodView):
                             return jsonify({"status":400, "data":[{'error-message': 'This red-flag already exists, please create a new one.'}]})
             
                     # red flag record primary key
-                    id = len(redflag_list)+1
-                    new_redflag_record = RedFlag(id, str(datetime.datetime.now()), request.json['createdBy'], "red-flag", \
+                    redflag_id = len(redflag_list)+1
+                    new_redflag_record = RedFlag(redflag_id, str(datetime.datetime.now()), request.json['createdBy'], "red-flag", \
                                                     request.json['location'], "draft", request.json['comment'])
 
                     redflag_list.append(new_redflag_record)
-                    return jsonify({"status":201, "data":[{"id":id, "message":"Created red-flag record"}]}),201
+                    return jsonify({"status":201, "data":[{"id":redflag_id, "message":"Created red-flag record"}]}),201
                 return validate_data
             
             return jsonify({"status":400, "data": [{"error-message" : "wrong body format. follow this example ->> {'createdBy':​James​, 'location':​​[12.4567,3.6789]​, 'comment': '​collapsed bridges'"}]})
@@ -83,7 +83,8 @@ class RedFlagViews(MethodView):
                     for redflag_record in redflag_list:
                         if redflag_record.__dict__['id'] == int(id):
                             if redflag_record.__dict__['createdBy'] == request.json['createdBy']:
-                                if redflag_record.__dict__['status'] in ['under investigation','rejected','resolved']:
+                                status = redflag_record.__dict__['status']
+                                if status in ['under investigation','rejected','resolved']:
                                     return jsonify({"status":400, "data": [{"error-message" : "You can no longer edit or delete this red-flag"}]})
                                 redflag_list.remove(redflag_record)
                                 return jsonify({"status":201, "data":[{"id":id, "message":"red-flag record has been deleted"}]})
