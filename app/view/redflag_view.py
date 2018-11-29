@@ -104,22 +104,23 @@ class UpdateStatus(MethodView):
         except:
             return jsonify({"status": 400, "data":[{"error-message":"id should be a non negative integer" }]})
         
-        if redflag_id > 0:
-            if request.content_type == 'application/json':
-                if 'status' in request.json and isinstance(request.json['status'], str):
-                    redflag_json = request.get_json()
-                    for redflag_record in redflag_list:
-                        if redflag_record.__dict__['id'] == redflag_id:
-                            if redflag_json['status'].lower() in ['under investigation','rejected', 'resolved']:
-                                redflag_record.__dict__['status'] = redflag_json['status'].lower()
-                                return jsonify({"status":200, "data":[{"id":redflag_id, "message":"Updated red-flag record’s location"}]})
-                            return jsonify({"status":400, "data": [{"error-message" : "The status can either be 'under investigation', 'rejected', or 'resolved'"}]})
-                    return jsonify({"status":404, "data": [{"error-message" : "No red-flag found"}]})
-                return jsonify({"status": 400, "data":[{"error-message" : "wrong body format. follow this example ->> {'status':'under investigation'}"}]})
+        if redflag_id <= 0:
+            return jsonify({"status": 400, "data":[{"error-message" : "id cannot be a negative"}]})
+        if request.content_type != 'application/json':
             return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]})
-        return jsonify({"status": 400, "data":[{"error-message" : "id cannot be a negative"}]})
+        if 'status' not in request.json and not isinstance(request.json['status'], str):
+            return jsonify({"status": 400, "data":[{"error-message" : "wrong body format. follow this example ->> {'status':'under investigation'}"}]})
+        redflag_json = request.get_json()
+        for redflag_record in redflag_list:
+            if redflag_record.__dict__['id'] != redflag_id:
+                return jsonify({"status":404, "data": [{"error-message" : "No red-flag found"}]})
 
-
+            if redflag_json['status'].lower() not in ['under investigation','rejected', 'resolved']:
+                return jsonify({"status":400, "data": [{"error-message" : "The status can either be 'under investigation', 'rejected', or 'resolved'"}]})
+            redflag_record.__dict__['status'] = redflag_json['status'].lower()
+        return jsonify({"status":200, "data":[{"id":redflag_id, "message":"Updated red-flag record’s location"}]})
+                
+            
 class RedFlagUrls:
     @staticmethod
     def fetch_urls(app):
