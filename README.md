@@ -71,4 +71,4 @@ Then after installing pytest, type the command below to run the tests
 * Currently only version:1 is available 
 
 ## Deployment
-* The app is deployed on heroku  https://
+* The app is deployed on heroku  https://ireporters1.herokuapp.com/api/v1/red-flags
