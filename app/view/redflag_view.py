@@ -27,17 +27,23 @@ class RedFlagViews(MethodView):
         
     # Create a red-flag record
     def post(self):
+        content_t = Validators.validate_content_type(request.content_type)
         
-        if not request.content_type == 'application/json':
-            return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]})
+        if content_t is not True:
+            return content_t
            
         if 'createdBy' not in request.json  and 'location' not in request.json and 'comment' not in request.json:
             return jsonify({"status":400, "data": [{"error-message" : "wrong body format. follow this example ->> {'createdBy':​James​, 'location':​​[12.4567,3.6789]​, 'comment': '​collapsed bridges'"}]})
         
-        validate_data = Validators.validate_create_redflag(request.json['createdBy'],request.json['location'],request.json['comment'])
+        validate_data = Validators.validate_create_redflag(request.json['createdBy'],request.json['comment'])
+        validate_location = Validators.validate_location(request.json['location'])
         
         if validate_data is not True:
             return validate_data
+        
+        if validate_location is not True:
+            return validate_location
+
         if redflag_list:
             check_for_existance = [redflag_record.__dict__ for redflag_record in redflag_list if redflag_record.__dict__['createdBy'] == request.json['createdBy'] and \
                             redflag_record.__dict__['location'] == request.json['location'] and redflag_record.__dict__['comment'] == request.json['comment']]
@@ -57,11 +63,16 @@ class RedFlagViews(MethodView):
          
 
     def put(self, id):
+        content_t = Validators.validate_content_type(request.content_type)
+        
+        if content_t is not True:
+            return content_t
+
         update_id = Validators.validate_redflag_id(id)
+
         if update_id is not True:
             return Validators.validate_redflag_id(id)
-        if not request.content_type == 'application/json':
-             return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]})
+
         if 'location' not in request.json:
             return jsonify({"status": 400, "data":[{"error-message" : "wrong body format. follow this example ->> {'status':'under investigation'}"}]})
         
@@ -81,11 +92,14 @@ class RedFlagViews(MethodView):
         
     # Delete a specific red flag record
     def delete(self, id):
+        content_t = Validators.validate_content_type(request.content_type)
+        
+        if content_t is not True:
+            return content_t
+
         get_id = Validators.validate_redflag_id(id)
         if get_id is not True:
              return  Validators.validate_redflag_id(id)
-        if not request.content_type == 'application/json':
-            return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]})
         if 'createdBy' not in request.json: 
             return jsonify({"status": 400, "data":[{"error-message" : "username is missing. follow this example ->> {'createdBy':'James'}"}]})
         if not isinstance(request.json['createdBy'],str):
@@ -111,11 +125,15 @@ class RedFlagViews(MethodView):
 class UpdateStatus(MethodView):
 
      def put(self, id):
+        content_t = Validators.validate_content_type(request.content_type)
+        
+        if content_t is not True:
+            return content_t
+
         update_id = Validators.validate_redflag_id(id)
         if update_id is not True:
             return Validators.validate_redflag_id(id)
-        if not request.content_type == 'application/json':
-            return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]})
+
         if not 'status' in request.json:
             return jsonify({"status": 400, "data":[{"error-message" : "wrong body format. follow this example ->> {'status':'under investigation'}"}]})
         if not isinstance(request.json['status'], str):
@@ -133,8 +151,6 @@ class UpdateStatus(MethodView):
         
         
         
-
-
 class RedFlagUrls:
     @staticmethod
     def fetch_urls(app):

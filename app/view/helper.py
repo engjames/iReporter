@@ -30,21 +30,13 @@ class Validators:
         return jsonify({"status":400, "data": [{'error-message' : get_errors}]})
 
 
-    def validate_create_redflag(createdBy,location,comment):
+    def validate_create_redflag(createdBy,comment):
         errors = []
-        if not createdBy or  not location or not comment:
+        if not createdBy or not comment:
             errors.append("createdBy, location, and comment cannot be empty.")
         if not isinstance(createdBy, str):
             errors.append("createdBy should be a string")
 
-        if type(location) is list:
-            if len(location) == 2:
-                if (type(location[0]) not in [int, float]) or (type(location[0]) not in [int, float]):
-                    errors.append("location should contain only integers or floats")
-            else:
-                errors.append("location expects only two parameters in the list")
-        if not type(location) is list:
-            errors.append("wrong location format. follow this example ->> {'location':[12.3453,9.6589]}")
         if not isinstance(comment, str):
             errors.append("comment should be string")
 
@@ -52,3 +44,9 @@ class Validators:
             return jsonify({"status":400, "data": [{'error-message' : errors}]})
 
         return True
+
+    @staticmethod
+    def validate_content_type(contentType):
+        if contentType == 'application/json':
+            return True
+        return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]})

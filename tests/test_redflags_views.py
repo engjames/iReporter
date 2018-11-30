@@ -10,7 +10,6 @@ def test_when_there_are_no_redflags():
     json_data = json.loads(result.data)
     assert json_data['data'][0]['message'] == "No red-flags found. Please create one."
 
-
 ############################# Tests for addng a new red-flag ######################################
 def test_to_create_a_new_redflag():
     """
@@ -346,13 +345,12 @@ def test_to_create_a_redflag_with_wrong_data():
     assert "data" in json_data4
 
     assert json_data1['data'][0]['error-message'] == "wrong body format. follow this example ->> {'createdBy':​James​, 'location':​​[12.4567,3.6789]​, 'comment': '​collapsed bridges'"
-    assert json_data2['data'][0]['error-message'] == ["createdBy, location, and comment cannot be empty.","location expects only two parameters in the list"]
+    assert json_data2['data'][0]['error-message'] == ["createdBy, location, and comment cannot be empty."]
     assert json_data3['data'][0]['error-message'] == [
-                                                        "createdBy, location, and comment cannot be empty.",
                                                         "createdBy should be a string",
-                                                        "wrong location format. follow this example ->> {'location':[12.3453,9.6589]}",
                                                         "comment should be string"
                                                     ]
+
     assert json_data4['data'][0]['error-message'] == ["location should contain only integers or floats"]
     
 
