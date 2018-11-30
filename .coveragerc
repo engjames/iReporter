@@ -1,2 +1,2 @@
 [run]
-omit = app/__init__.py, app/model/__init__.py, app/model/redflag_model.py, app/view/__init__.py, tests/__init__.py, tests/test_redflags_views.py, app/view/helper.py  
+omit = app/__init__.py, app/model/__init__.py, app/model/redflag_model.py, app/view/__init__.py, tests/__init__.py, tests/test_redflags_views.py, app/view/helper.py, runserver.py
