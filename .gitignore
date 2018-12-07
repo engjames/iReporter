@@ -1,0 +1,6 @@
+app
+env
+tests
+.pytest_cache
+.vscode
+
