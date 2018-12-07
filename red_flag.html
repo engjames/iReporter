@@ -14,32 +14,69 @@
   <a href="red_flag.html"><img  src = "img/logo2.png" id ="hed"></a> 
   <li><a href="index.html">log out</a></li>
   <li><a href="profile.html">profile</a></li>
-  <li><a href="intervention.html">intervention</a></li>
-  <li><a class="active" href="red_flag.html">red-flag</a></li>
+  <!-- <li><a href="intervention.html">interventions</a></li> -->
+  <li><a class="active" href="red_flag.html">Records(Red-Flag or Intervation)</a></li>
 </div>
   </ul>
 </header>
-  <h1 id = 'heading'>Red-Flags</h1> 
+  <h1 id = 'heading'>Red-Flags or Intervation Records</h1> 
 <section>
  <table>
-  <button id="modalBtn" class="button"> + Red-Flag</button>
+  <button id="modalBtn" class="button"> + Records</button>
   <tr>
-    <th>#</th>
-    <th>Name</th>
+    <th>Title</th>
+    <th>Description</th>
     <th>Location</th>
+    <th>Type</th>
     <th>Status</th>
+    <th>Attatchment</th>
     <th>Created On</th>
     <th>Actions</th>
   </tr>
   
   <tr>
-    <td>1</td>
     <td>collapsed bridges</td>
+    <td>Due to heavy rain fall in the last month, our bridge has collapsed hence destroying our road</td>
     <td>0.347596,32.582520</td>
-    <td>new</td>
+    <td>Red-Flag</td>
+    <td>Pending</td>
+    <td><img src="assets/images/bridges.jpeg" height="90px" width="140px"/></td>
     <td>11-08-2017</td>
     <td><button id="editBtn" class="button">Edit</button>&nbsp &nbsp  <button id = 'delete-button'  onclick = "mydeleteFunction()">Delete</button></td>
   </tr>
+  <tr>
+      <td>coruption</td>
+      <td>Due to poverty there is increased corruption at mukono headquarters</td>
+      <td>0.347596,32.582520</td>
+      <td>Intervention</td>
+      <td>Under investigation</td>
+      <td><img src="assets/images/corruption.jpeg" height="90px" width="140px"/></td>
+      <td>11-08-2017</td>
+      <td><button id="editBtn" class="button">Edit</button>&nbsp &nbsp  <button id = 'delete-button'  onclick = "mydeleteFunction()">Delete</button></td>
+    </tr>
+
+    <tr>
+      <td>Bad roads</td>
+      <td>Due to lack of trenches, roads are in a missarable conditoion</td>
+      <td>20.347596,30.582520</td>
+      <td>Intervention</td>
+      <td>Resolved</td>
+      <td><img src="assets/images/roads.jpeg" height="90px" width="140px"/</td>
+      <td>16-09-2018</td>
+      <td><button id="editBtn" class="button">Edit</button>&nbsp &nbsp  <button id = 'delete-button'  onclick = "mydeleteFunction()">Delete</button></td>
+    </tr>
+
+    <tr>
+      <td>Lack of drugs</td>
+      <td>Since most drugs are expensive, it creates inadquancy in hospitals especially in northen Ugandas</td>
+      <td>7.347596,9.582520</td>
+      <td>Red-Flag</td>
+      <td>Rejected</td>
+      <td><img src="assets/images/drugs.jpeg" height="90px" width="140px"/</td>
+      <td>07-12-2018</td>
+      <td><button id="editBtn" class="button">Edit</button>&nbsp &nbsp  <button id = 'delete-button'  onclick = "mydeleteFunction()">Delete</button></td>
+    </tr>
+
 </table>
 </section>
 
@@ -50,12 +87,21 @@
   <!-- Modal content -->
   <div class="modal-content">
     <div class="modal-header">
-           <h1>Add Red-Flag <span class="closeBtn">&times;</span></h1>
+           <h1>Add Records <span class="closeBtn">&times;</span></h1>
     </div>
     <div class="modal-body">
       <form class="modal_elements">
-        <label for="fname">Name</label>
-        <input type="text" name="name" placeholder="Enter Red-Flag" required>
+        <label for="title">Title</label>
+        <input type="text" name="title" placeholder="Enter Title" required>
+        <label for="desc">Description</label>
+        <input type="text" name="desc" placeholder="Enter Description" required>
+        <label for="type">Type</label>
+        <select id="select" name="type" required>
+          <option value="redflag">Red-Flag</option>
+          <option value="intervention">Intervation</option>
+        </select>
+        <label for="attatchment">Attatch Image</label>
+        <input type="file" name="attatchment"  required>
         <label for="fname">Location</label><br/>
         <input type="number" name="location" id="latitude" placeholder="Enter Latitude" required>
         <input type="number" placeholder="Enter Longitude" id="longitude" name="longitude" required><br/><br/>
@@ -77,12 +123,21 @@
   <!-- Modal content -->
   <div class="modal-content">
     <div class="modal-header">
-      <h1>Edit Red-Flag <span class="closeEditBtn">&times;</span></h1>
+      <h1>Edit Records <span class="closeEditBtn">&times;</span></h1>
       </div>
     <div class="Edit-body">
         <form class="modal_elements">
-            <label for="fname">Name</label>
-            <input type="text" name="name" value="collapsed bridges" required>
+            <label for="title">Title</label>
+            <input type="text" name="title" value="collapsed bridges" required>
+            <label for="desc">Description</label>
+            <input type="text" name="desc" value="Due to heavy rain fall in the last month, our bridge has collapsed hence destroying our road" required>
+            <label for="type">Type</label>
+            <select id="select" name="type" required>
+              <option value="redflag">Red-Flag</option>
+              <option value="intervention">Intervation</option>
+            </select>
+            <label for="attatchment">Attatch Image</label>
+            <input type="file" name="attatchment"  required>
             <label for="fname">Location</label><br/>
             <input type="number" name="location" id="latitude" value="0.347596" required>
             <input type="number" value="32.582520" id="longitude" name="longitude" required><br/><br/>
