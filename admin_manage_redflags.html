@@ -13,33 +13,74 @@
   <ul>
   <a href="admin_manage_redflags.html"><img  src = "img/logo2.png" id="hed"></a> 
   <li><a href="index.html">log out</a></li>
-  <li><a href="admin_manage_interventions.html">intervention</a></li>
-  <li><a  class="active" href="admin_manage_redflags.html">red-flag</a></li>
+  <li><a href="admin_manage_interventions.html">interventions</a></li>
+  <li><a  class="active" href="admin_manage_redflags.html">red-flags</a></li>
 </div>
   </ul>
 </header>
   <h1 id = 'heading'>Red-Flags</h1> 
 <section>
  <table>
+
   <tr>
-    <th>#</th>
-    <th>Username</th>
-    <th>Red-Flag</th>
-    <th>Location</th>
-    <th>Status</th>
-    <th>Created On</th>
-    <th>Actions</th>
-  </tr>
+      <th>#</th>
+      <th>username</th>
+      <th>Red-Flags</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Image</th>
+      <th>Status</th>
+      <th>Created On</th>
+      <th>Actions</th>
+    </tr>
+    
+    <tr>
+      <td>1</td>
+      <td>James</td>
+      <td>repair bad road sections</td>
+      <td>The poor roads are due to lack of proper trenches</td>
+      <td>0.347596,32.582520</td>
+      <td><img src = "assets/images/roads.jpeg" width="140px" height="90px"/></td>
+      <td>Pending</td>
+      <td>11-08-2017</td>
+      <td><button id="modalBtn" class="button" style = 'float:right; margin-right: 138px ;margin-top: -10px'>update status</button></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>Frank</td>
+      <td>Corruption</td>
+      <td>Corruption is due to delay in government payments</td>
+      <td>85.347596,42.582520</td>
+      <td><img src = "assets/images/corruption.jpeg" width="140px" height="90px"/></td>
+      <td>Under investigation</td>
+      <td>23-08-2018</td>
+      <td><button id="modalBtn" class="button" style = 'float:right; margin-right: 138px ;margin-top: -10px'>update status</button></td>
+    </tr>
   
-  <tr>
-    <td>1</td>
-    <td>Kisuule</td>
-    <td>collapsed bridges</td>
-    <td>0.347596,32.582520</td>
-    <td>new</td>
-    <td>11-08-2017</td>
-    <td><button id="modalBtn" class="button" style = 'float:right; margin-right: 138px ;margin-top: -10px'>update status</button></td>
-  </tr>
+    <tr>
+      <td>3</td>
+      <td>Esther</td>
+      <td>Water accidents</td>
+      <td>The water accidents are due to poor condition of bats and lack of life jackets</td>
+      <td>20.347596,179.582520</td>
+      <td><img src = "assets/images/water.jpeg" width="140px" height="90px"/></td>
+      <td>Resolved</td>
+      <td>11-09-2018</td>
+      <td><button id="modalBtn" class="button" style = 'float:right; margin-right: 138 ;margin-top: -10px'>update status</button></td>
+    </tr>
+
+    <tr>
+      <td>4</td>
+      <td>Sandra</td>
+      <td>Electricity poles</td>
+      <td>Due to heavy rain fall some of the electricity poles are down at kawempe</td>
+      <td>25.347596,19.582520</td>
+      <td><img src = "assets/images/electricity.jpeg" width="140px" height="90px"/></td>
+      <td>Rejected</td>
+      <td>11-09-2018</td>
+      <td><button id="modalBtn" class="button" style = 'float:right; margin-right: 138 ;margin-top: -10px'>update status</button></td>
+    </tr>
 </table>
 </section>
 
