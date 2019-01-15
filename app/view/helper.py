@@ -4,7 +4,7 @@ class Validators:
     @staticmethod
     def validate_redflag_id(id):
         try:
-                redflag_id = int(id)
+            redflag_id = int(id)
         except:
             return make_response(jsonify({"status": 400, "data":[{"error-message":"id should be a non negative integer" }]}))
 
@@ -50,3 +50,9 @@ class Validators:
         if contentType == 'application/json':
             return True
         return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]})
+
+    # @staticmethod
+    # def validate_createdby(createdBy):
+    #     if not isinstance(request.json['createdBy'],str):
+    #         return jsonify({"status":400, "data": [{"error-message" : "Username must be a string. follow this example ->> {'createdBy':'James'}"}]})
+    #     return True

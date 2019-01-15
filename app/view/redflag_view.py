@@ -113,7 +113,7 @@ class RedFlagViews(MethodView):
                 if status in ['under investigation','rejected','resolved']:
                     return jsonify({"status":400, "data": [{"error-message" : "You can no longer edit or delete this red-flag"}]})
                 redflag_list.remove(redflag_record)
-                return jsonify({"status":201, "data":[{"id":int(id), "message":"red-flag record has been deleted"}]})
+                return jsonify({"status":200, "data":[{"id":int(id), "message":"red-flag record has been deleted"}]})
                 
         return jsonify({"status":404, "data": [{"error-message" : "No red-flag found"}]})
         
@@ -136,7 +136,7 @@ class UpdateStatus(MethodView):
 
         if not 'status' in request.json:
             return jsonify({"status": 400, "data":[{"error-message" : "wrong body format. follow this example ->> {'status':'under investigation'}"}]})
-        if not isinstance(request.json['status'], str):
+        if not type(request.json['status']) in [str]:
             return jsonify({"status":400, "data": [{"error-message" : "the status must be a string. follow this example ->> {'status':'resolved'}"}]})
         
         redflag_json = request.get_json()
