@@ -50,9 +50,26 @@ class Validators:
         if contentType == 'application/json':
             return True
         return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]})
-
-    # @staticmethod
-    # def validate_createdby(createdBy):
-    #     if not isinstance(request.json['createdBy'],str):
-    #         return jsonify({"status":400, "data": [{"error-message" : "Username must be a string. follow this example ->> {'createdBy':'James'}"}]})
-    #     return True
+    @staticmethod
+    def validate_tt(data, redflag_list,createdBy):
+        errors = []
+        if 'createdBy' not in data: 
+            return jsonify({"status":400, "error":"username is missing. follow this example ->> {'createdBy':'James'}"})
+        if not isinstance(data['createdBy'],str):
+            errors.append("Username must be a string. follow this example ->> {'createdBy':'James'}")
+        if Validators.validate_data(createdBy,redflag_list) is not True:
+            return Validators.validate_data(createdBy,redflag_list)
+        if errors:
+            return errors
+        return True
+    @staticmethod
+    def validate_data(createdBy,redflags):
+        check_record = [i for i in redflags if i.__dict__['createdBy']==createdBy]
+        if not check_record:
+            return jsonify({"status": 400, "data":[{"error-message" : "invalid username"}]}) 
+        status = check_record[0].__dict__['status']
+        if status in ['under investigation','rejected','resolved']:
+            return jsonify({"status":400, "data": [{"error-message" : "You can no longer edit or delete this red-flag"}]})
+                
+        return True
+        

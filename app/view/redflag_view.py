@@ -7,9 +7,6 @@ from app.view.helper import Validators
 redflag_list = []
 class RedFlagViews(MethodView):
 
-    #self, id, "23/11/2018", "James", "red-flag", (12.6578.8.9090), "draft", "collapsed bridges"
-    # redflag_record = RedFlag(1,"23/11/2018", "James", "red-flag", [12.6578,8.9090], "rejected", "collapsed bridges")
-   
     def get(self, id):
         if id is None:
             if not redflag_list:
@@ -59,9 +56,6 @@ class RedFlagViews(MethodView):
         return jsonify({"status":201, "data":[{"id":redflag_id, "message":"Created red-flag record"}]}),201
         
         
-        
-         
-
     def put(self, id):
         content_t = Validators.validate_content_type(request.content_type)
         
@@ -92,30 +86,25 @@ class RedFlagViews(MethodView):
         
     # Delete a specific red flag record
     def delete(self, id):
-        content_t = Validators.validate_content_type(request.content_type)
-        
-        if content_t is not True:
-            return content_t
+        if Validators.validate_content_type(request.content_type) is not True:
+            return Validators.validate_content_type(request.content_type)
 
-        get_id = Validators.validate_redflag_id(id)
-        if get_id is not True:
+        if Validators.validate_redflag_id(id) is not True:
              return  Validators.validate_redflag_id(id)
-        if 'createdBy' not in request.json: 
-            return jsonify({"status": 400, "data":[{"error-message" : "username is missing. follow this example ->> {'createdBy':'James'}"}]})
-        if not isinstance(request.json['createdBy'],str):
-            return jsonify({"status":400, "data": [{"error-message" : "Username must be a string. follow this example ->> {'createdBy':'James'}"}]})
 
-        for redflag_record in redflag_list:
-            if redflag_record.__dict__['id'] == int(id):
-                if not redflag_record.__dict__['createdBy'] == request.json['createdBy']:
-                    return jsonify({"status": 400, "data":[{"error-message" : "invalid username"}]})
-                status = redflag_record.__dict__['status']
-                if status in ['under investigation','rejected','resolved']:
-                    return jsonify({"status":400, "data": [{"error-message" : "You can no longer edit or delete this red-flag"}]})
-                redflag_list.remove(redflag_record)
-                return jsonify({"status":200, "data":[{"id":int(id), "message":"red-flag record has been deleted"}]})
+        redflag_exists = [flag for flag in redflag_list if flag.__dict__['id']==int(id)]
+        if not redflag_exists:
+            return jsonify({"status":404, "data": [{"error-message" : "No red-flag found"}]})
+
+        data = request.get_json()
+        if Validators.validate_tt(data, redflag_list, request.json['createdBy']) is not True:
+            return Validators.validate_tt(data, redflag_list, request.json['createdBy'])
+        redflag_record = [ record for record in redflag_list if record.__dict__['id']==int(id)]
+        redflag_list.remove(redflag_record[0])
+        return jsonify({"status":200, "data":[{"id":int(id), "message":"red-flag record has been deleted"}]})
+ 
                 
-        return jsonify({"status":404, "data": [{"error-message" : "No red-flag found"}]})
+     
         
         
        

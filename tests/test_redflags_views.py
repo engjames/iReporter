@@ -352,27 +352,6 @@ def test_to_create_a_redflag_with_wrong_data():
                                                     ]
 
     assert json_data4['data'][0]['error-message'] == ["location should contain only integers or floats"]
-    
-
-######################## tests for deleting a red-flag with wrong username #######################################
-def test_delete_redflag_with_wrong_username():
-    result1 = CLIENT().delete('/api/v1/red-flags/1', content_type='application/json',
-                                        data=json.dumps({"createdBy":"dgfhdjdj"}))
-    result2 = CLIENT().delete('/api/v1/red-flags/1', content_type='application/json',
-                                        data=json.dumps({}))
-    result3 = CLIENT().delete('/api/v1/red-flags/1', content_type='application/json',
-                                        data=json.dumps({"createdBy":90}))
-    assert result1.status_code == 200
-    assert result2.status_code == 200
-    assert result3.status_code == 200
-    json_data1 = json.loads(result1.data)
-    json_data2 = json.loads(result2.data)
-    json_data3 = json.loads(result3.data)
-
-    assert json_data1['data'][0]['error-message'] == "invalid username"
-    assert json_data2['data'][0]['error-message'] ==  "username is missing. follow this example ->> {'createdBy':'James'}"
-    assert json_data3['data'][0]['error-message'] == "Username must be a string. follow this example ->> {'createdBy':'James'}"
-
 
 ############################# tests for checking whethera red-flag already exists #################################
 def test_whether_a_redflag_already_exists():
