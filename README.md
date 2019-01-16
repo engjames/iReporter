@@ -1,13 +1,8 @@
+
+[![Build Status](https://travis-ci.org/engjames/iReporter.svg?branch=cha2_finished_api)](https://travis-ci.org/engjames/iReporter)     [![Coverage Status](https://coveralls.io/repos/github/engjames/iReporter/badge.png?branch=cha2_finished_api)](https://coveralls.io/github/engjames/iReporter?branch=cha2_finished_api)     [![Maintainability](https://api.codeclimate.com/v1/badges/d319f633a9597052943a/maintainability)](https://codeclimate.com/github/engjames/iReporter/maintainability)
+
 # iReporter
 iReporter enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public. Users can also report on things that needs government intervention
-## Travis
-[![Build Status](https://travis-ci.org/engjames/iReporter.svg?branch=cha2_finished_api)](https://travis-ci.org/engjames/iReporter)
-
-## coveralls
-[![Coverage Status](https://coveralls.io/repos/github/engjames/iReporter/badge.svg?branch=cha2_finished_api)](https://coveralls.io/github/engjames/iReporter?branch=cha2_finished_api)
-
-## code climate
-[![Maintainability](https://api.codeclimate.com/v1/badges/d319f633a9597052943a/maintainability)](https://codeclimate.com/github/engjames/iReporter/maintainability)
 
 ## Getting Started
 
@@ -69,15 +64,11 @@ Then after installing pytest, type the command below to run the tests
  pytest
 ```
 ## Built With
-
 * [Flask](http://flask.pocoo.org/docs/1.0/) - Python web framework used
 
 ## Versioning
-
 * URL Versioning has been used to version this applications endpoint 
-
 * Currently only version:1 is available 
 
 ## Deployment
-
-* The app is deployed on heroku  https://
+* The app is deployed on heroku  https://ireporters1.herokuapp.com/api/v1/red-flags
