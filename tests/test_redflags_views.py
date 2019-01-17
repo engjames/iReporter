@@ -210,54 +210,6 @@ def test_for_updating_redflag_status_with_wrong_values():
 ############################# Tests to change_geolocation_of_a_redflag with_wrong_values ######################################
 
 
-def test_to_change_geolocation_of_a_redflag_with_wrong_values():
-    """
-    Method for changing geolocation
-    """
-
-    result1 = CLIENT().put('/api/v1/red-flags/1', content_type='application/json',
-                           data=json.dumps({"location": 4}))
-
-    result2 = CLIENT().put('/api/v1/red-flags/1', content_type='application/json',
-                           data=json.dumps({"location": "fhfhf"}))
-    result3 = CLIENT().put('/api/v1/red-flags/1', content_type='application/json',
-                           data=json.dumps({"location": True}))
-    result4 = CLIENT().put('/api/v1/red-flags/james', content_type='application/json',
-                           data=json.dumps({"location": [2, 2]}))
-
-    result5 = CLIENT().put('/api/v1/red-flags/1', content_type='application/json',
-                           data=json.dumps({"location": ["2", "2"]}))
-
-    result6 = CLIENT().put('/api/v1/red-flags/1', content_type='application/json',
-                           data=json.dumps({"location": [2, 2, 2]}))
-
-    result8 = CLIENT().put('/api/v1/red-flags/1', content_type='application/json',
-                           data=json.dumps({}))
-
-    results = [result1, result2, result3]
-    for result in results:
-        assert result.status_code == 200
-
-        json_data = json.loads(result.data)
-        assert "data" in json_data
-        assert json_data['data'][0]['error-message'] == [
-            "wrong location format. follow this example ->> {'location':[12.3453,9.6589]}"]
-        assert json_data['status'] == 400
-
-    json_data4 = json.loads(result4.data)
-    json_data5 = json.loads(result5.data)
-    json_data6 = json.loads(result6.data)
-    json_data8 = json.loads(result8.data)
-
-    assert json_data4['data'][0]['error-message'] == "id should be a non negative integer"
-    assert json_data5['data'][0]['error-message'] == [
-        "location should contain only integers or floats"]
-    assert json_data6['data'][0]['error-message'] == [
-        "location expects only two parameters in the list"]
-    assert json_data8['data'][0][
-        'error-message'] == "wrong body format. follow this example ->> {'status':'under investigation'}"
-
-
 #########################tests for updating a red-flag that doesn't exist####################################
 def test_to_update_a_redflag_which_doesnt_exist():
     result1 = CLIENT().put('/api/v1/red-flags/10000', content_type='application/json',
