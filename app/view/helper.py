@@ -17,7 +17,7 @@ class Validators:
         get_errors = []
         if type(get_location) is list:
             if len(get_location) == 2:
-                if (type(get_location[0]) not in [int, float]) or (type(get_location[0]) not in [int, float]):
+                if (type(get_location[0]) not in [int, float]) or (type(get_location[1]) not in [int, float]):
                     get_errors.append(
                         "location should contain only integers or floats")
             else:
